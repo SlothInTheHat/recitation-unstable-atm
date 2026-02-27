@@ -62,6 +62,9 @@ TEST_CASE("Example: Simple widthdraw", "[ex-2]") {
   Account sam_account = accounts[{12345678, 1234}];
 
   REQUIRE(sam_account.balance == 280.30);
+
+  REQUIRE_THROWS_AS(atm.WithdrawCash(12345678, 1234, -20), std::invalid_argument);
+  REQUIRE_THROWS_AS(atm.WithdrawCash(12345678, 1234, 2000000), std::runtime_error);
 }
 
 TEST_CASE("Example: Print Prompt Ledger", "[ex-3]") {
