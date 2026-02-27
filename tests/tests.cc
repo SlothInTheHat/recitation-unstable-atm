@@ -49,7 +49,9 @@ TEST_CASE("Example: Create a new account", "[ex-1]") {
   REQUIRE(accounts.size() == 1);
   std::vector<std::string> empty;
   REQUIRE(transactions[{12345678, 1234}] == empty);
-  int a = 1;
+  
+  REQUIRE_THROWS_AS(atm.RegisterAccount(12345678, 1234, "Sam Sepiol", 300.30), std::invalid_argument);
+
 }
 
 TEST_CASE("Example: Simple widthdraw", "[ex-2]") {
